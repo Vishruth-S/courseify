@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Edit Course</h1>
+        <div class="col-6 offset-3">
+            <form action="/courses/<%=course._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="course[title]" value="<%=course.title%>"
+                        required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image URL</label>
+                    <input class="form-control" type="text" id="image" name="course[image]" value="<%=course.image%>"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">description </label>
+                    <textarea class="form-control" type="text" id="description" name="course[description]"
+                        required><%=course.description%></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Update Course</button>
+                </div>
+            </form>
+            <a href="/courses/<%=course._id%>"><button class="btn btn-primary">Go back</button></a>
+        </div>
+    </div>
