@@ -9,6 +9,9 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
+    name: {
+        type: String,
+    },
     myCourses: [
         {
             type: Schema.Types.ObjectId,

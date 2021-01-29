@@ -2,12 +2,20 @@
     <h1>Register</h1>
     <form action="/register" class="validated-form" method="POST" novalidate>
         <div class="mb-3">
-            <label class="form-label" for="username">Usernmae</label>
+            <label class="form-label" for="name">Your Name</label>
+            <input class="form-control" type="text" id="name" name="name" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="username">Set a Username</label>
             <input class="form-control" type="text" id="username" name="username" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
+
         <div class="mb-3">
             <label class="form-label" for="email">Email</label>
             <input class="form-control" type="email" id="email" name="email" required>
@@ -15,8 +23,9 @@
                 Looks good!
             </div> -->
         </div>
+
         <div class="mb-3">
-            <label class="form-label" for="password">Password</label>
+            <label class="form-label" for="password">Set a Password</label>
             <input class="form-control" type="password" id="password" name="password" required>
             <div class="valid-feedback">
                 Looks good!

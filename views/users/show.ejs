@@ -2,27 +2,42 @@
     <div class="row">
         <div class="col-md-4">
             <h1>
-                <%= user.username %>
+                <%= user.name %>
             </h1>
         </div>
         <div class="col-md-8">
-            <h2>Courses by <%= user.username %>
-            </h2>
-            <ul>
-                <% courses.forEach(course=>{ %>
-                    <li>
-                        <%= course.title %>
-                    </li>
-                    <% }) %>
-            </ul>
-            <h2>Courses enrolled by <%= user.username %>
-            </h2>
-            <ul>
-                <% user.myCourses.forEach(course=>{ %>
-                    <li>
-                        <%= course.title %>
-                    </li>
-                    <% }) %>
-            </ul>
+            <% if(courses.length> 1) { %>
+                <% if(currentUser && currentUser._id.equals(user._id)) { %>
+                    <h2>Courses by Me</h2>
+                    <% } else { %>
+                        <h2>Courses by <%=user.name%>
+                        </h2>
+                        <% } %>
+                            <ul>
+                                <% courses.forEach(course=>{ %>
+                                    <li>
+                                        <%= course.title %>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                            <% } %>
+                                <% if(currentUser && currentUser._id.equals(user._id)) { %>
+                                    <h2>My courses</h2>
+                                    <% if(user.myCourses.length< 1) { %>
+                                        <h4>Ooh looks like it's quite empty here. Check out our courses
+                                        </h4>
+                                        <a href="/courses"><button class="btn btn-primary">Go to
+                                                Courses</button></a>
+                                        </h2>
+                                        <% } else { %>
+                                            <ul>
+                                                <% user.myCourses.forEach(course=>{ %>
+                                                    <li>
+                                                        <%= course.title %>
+                                                    </li>
+                                                    <% }) %>
+                                            </ul>
+                                            <% }} %>
+
         </div>
     </div>

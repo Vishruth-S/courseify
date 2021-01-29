@@ -1,0 +1,41 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+.tags {
+    display: inline-block;
+    background: #e4e4e4;
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin: 3px;
+}
+
+.show-tags {
+    display: inline-block;
+    background: #636363;
+    color: white;
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin: 3px;
+}
+
+.col-5 {
+    padding-right: 0px;
+}
+
+.course-show-img {
+    max-width: 500px;
+}
+
+.enroll-btn, .btn-already {
+    margin-top: 30px;
+}
+
+.ratingAvg {
+    color: #F5BD23;
+}
+
+.heading {
+    background:#e4e4e4;
+    padding: 50px;
+}

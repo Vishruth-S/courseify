@@ -21,6 +21,14 @@
                     <textarea class="form-control" type="text" id="description" name="course[description]"
                         required><%=course.description%></textarea>
                 </div>
+                <label for="tags">Choose course Tags:</label>
+                <p>(CTRL + Click to select Multiple)</p>
+                <select name="course[tags]" id="tags" multiple>
+                    <option value="web dev">web dev</option>
+                    <option value="ML">ML</option>
+                    <option value="Android">Android</option>
+                    <option value="React">React</option>
+                </select>
                 <div class="mb-3">
                     <button class="btn btn-success">Update Course</button>
                 </div>

@@ -1,26 +1,70 @@
 <% layout('layouts/boilerplate') %>
-    <h1>All courses</h1>
-    <ul>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Welcome to ThisApp</h1>
+                <p>Learn from the best</p>
+            </div>
+            <p>
+            <form action="/courses" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Search for a course..." class="form-control">
+                    <input type="submit" value="search" class="btn btn-primary">
+                </div>
+            </form>
+            </p>
+        </header>
+    </div>
+    <div class="col-md-6">
+        <% if(noMatch.length>= 1 && noMatch!=="noSearch") { %>
+            <h3>
+                <%= noMatch %>
+                    <a href="/courses"><button class="btn btn-primary">Go back</button></a>
+            </h3>
+            <% } else if(noMatch!=="noSearch" ) { %>
+                <h3>Search results for <%= search %>
+                </h3>
+                <a href="/courses"><button class="btn btn-primary">Go back to all courses</button></a>
+                <% } else { %>
+
+                    <h1>All courses</h1>
+                    <% } %>
+    </div>
+
+    <div class="row row-cols-1 row-cols-lg-3 g-4">
         <% for (let course of courses){%>
-            <div class="card" mb-3>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img class="img-fluid" src="<%= course.image%>" alt="">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <div class="card-title">
+            <div class="col">
+                <div class="card">
+                    <img class="img-fluid" src="<%= course.image%>" alt="">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-7">
                                 <h5 class="card-title">
-                                    <%= course.title%>
+                                    <%= course.title %>
                                 </h5>
-                                <p class="card-text">
-                                    <%= course.description %>
+                                <p class="text-muted">
+                                    <%= course.author.name %>
                                 </p>
-                                <a class="btn btn-primary" href="/courses/<%=course.id %>">View Course</a>
+                                <p>
+                                    <%= course.enrollers.length %> enrolled
+                                </p>
+                            </div>
+                            <div class="col-5">
+                                <!-- <div class="row"> -->
+                                <span>Tags: </span>
+                                <% course.tags.forEach(tag=>{ %>
+                                    <div class="tags">
+                                        <%= tag %>
+                                    </div>
+                                    <% }) %>
+                                        <!-- </div> -->
                             </div>
                         </div>
+
+                        <a class="btn btn-primary" href="/courses/<%=course.id %>">View
+                            Course</a>
                     </div>
                 </div>
             </div>
             <% } %>
-    </ul>
+    </div>

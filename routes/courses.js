@@ -7,8 +7,19 @@ const User = require('../models/User')
 
 
 router.get('/', async (req, res) => {
-    const courses = await Course.find({})
-    res.render('courses/index', { courses })
+    var noMatch = ""
+    if (req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        const courses = await Course.find({ title: regex }).populate('author')
+        if (courses.length == 0) {
+            noMatch = "Sorry, no courses match your query"
+        }
+        res.render('courses/index', { courses: courses, noMatch: noMatch, search: req.query.search })
+    } else {
+        const courses = await Course.find({}).populate('author')
+        res.render('courses/index', { courses: courses, noMatch: "noSearch" })
+    }
+
 })
 
 router.get('/new', isLoggedIn, (req, res) => {
@@ -34,7 +45,14 @@ router.get('/:id', async (req, res) => {
         req.flash('error', 'Cannot find that Course')
         return res.redirect('/courses/')
     }
-    res.render('courses/show', { course })
+    const reviewsLen = course.reviews.length
+    let sum = 0
+    course.reviews.forEach(review => {
+        sum += review.rating
+    })
+    const avgRating = reviewsLen > 0 ? Math.round(((sum / reviewsLen) + Number.EPSILON) * 100) / 100 : 0
+    // console.log(avgRating)
+    res.render('courses/show', { course, avgRating })
 })
 
 router.get('/:id/edit', isLoggedIn, isAuthor, async (req, res) => {
@@ -70,6 +88,10 @@ router.post('/:id/enroll/', isLoggedIn, async (req, res) => {
     req.flash('success', 'Enrolled successfully')
     res.redirect(`/courses/${course._id}`)
 })
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 
 module.exports = router
