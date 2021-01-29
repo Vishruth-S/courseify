@@ -15,6 +15,10 @@ a:hover {
     color: initial;
 }
 
+.navbar {
+    box-shadow: -1px -3px 20px 2px #000;
+}
+
 .card-img-top {
     height: 200px;
 }
