@@ -13,7 +13,7 @@ router.post('/', isLoggedIn, async (req, res) => {
     await review.save()
     await course.save()
     req.flash('success', 'Review posted successfully')
-    res.redirect(`/courses/${course._id}`)
+    res.redirect(`/courses/${course._id}#reviews`)
 })
 
 router.delete('/:reviewId', isLoggedIn, isCommentAuthor, async (req, res) => {

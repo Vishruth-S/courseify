@@ -1,3 +1,4 @@
+const { resolveInclude } = require('ejs')
 const express = require('express')
 const router = express.Router()
 const { isLoggedIn, isAuthor } = require('../middleware')
@@ -20,6 +21,16 @@ router.get('/', async (req, res) => {
         res.render('courses/index', { courses: courses, noMatch: "noSearch" })
     }
 
+})
+
+router.get('/tag/:id', async (req, res) => {
+    let noMatch = ""
+    const searchtag = req.params.id.trim()
+    const courses = await Course.find({ tags: searchtag }).populate('author')
+    if (courses.length == 0) {
+        noMatch = "Sorry, no courses found"
+    }
+    res.render('courses/index', { courses: courses, noMatch: noMatch, search: searchtag })
 })
 
 router.get('/new', isLoggedIn, (req, res) => {
@@ -76,6 +87,10 @@ router.delete('/:id', isLoggedIn, isAuthor, async (req, res) => {
     await Course.findByIdAndDelete(id)
     req.flash('success', 'Course was deleted successfully')
     res.redirect('/courses')
+})
+
+router.get('/:id/enroll/', (req, res) => {
+    res.redirect(`/courses/${req.params.id}`)
 })
 
 router.post('/:id/enroll/', isLoggedIn, async (req, res) => {

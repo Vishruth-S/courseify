@@ -50,8 +50,8 @@ span {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #420050;;
-	background-color: #420050;;
+	border: 1px solid #c10000;
+	background-color: #c10000;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -71,7 +71,8 @@ button:focus {
 
 button.ghost {
 	background-color: transparent;
-	border-color: #FFFFFF;
+	border-color: black;
+	color: black;
 }
 
 .signup-form {
@@ -165,12 +166,12 @@ button.ghost {
 
 .overlay {
 	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #ff00c8, #00d0ff);
-	background: linear-gradient(to right, #ff00c8, #00d0ff);
+	background: -webkit-linear-gradient( to right,#ffd400, #ff9900);
+	background: linear-gradient(to right, #ffd400, #ff9900);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
-	color: #FFFFFF;
+	color: black;
 	position: relative;
 	left: -100%;
 	height: 100%;
@@ -235,8 +236,8 @@ button.ghost {
 	}
 	button {
 		border-radius: 20px;
-		border: 1px solid #420050;
-		background-color: #420050;
+		border: 1px solid #c10000;
+		background-color: #c10000;
 		color: #FFFFFF;
 		font-size: 12px;
 		font-weight: bold;

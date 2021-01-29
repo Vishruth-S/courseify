@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/f9cc6eebb4.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="d-flex flex-column vh-100">
+<body class="d-flex flex-column vh-120">
     <%- include('../partials/navbar') %>
         <%- include('../partials/flash') %>
             <div class="jumbotron jumbotron-fluid">
@@ -19,63 +19,80 @@
                     <h1 class="display-4 jumbo">Welcome to ThisApp</h1>
                     <p class="lead">Learn from the best</p>
                     <h3 id="search-display-text">Looking for a course? </h3>
-                    <!-- <a href="/courses"><input class="search purple-btn"  id="browse-btn" type="submit" value="Go back to all courses" name=""></a> -->
-                    <form action="/courses" method="GET">
+                    <a href="/courses#allCourses"><input class="search red-btn" id="browse-btn" type="submit"
+                            value="All courses" name=""></a>
+                    <form action="/courses#tagCourses " method="GET">
                         <input class="search-txt" id="search-txt" type="text" name="search"
                             placeholder="Search for a course...">
-                        <button class="search purple-btn" id="search-btn" type="submit"> <i
+                        <button class="search red-btn" id="search-btn" type="submit"> <i
                                 class="fas fa-search"></i></button>
                     </form>
                 </div>
             </div>
+
             <main class="container mt-5">
-                <div class="col-md-6">
+                <div>
+                    <h3>Popular categories</h3>
+                    <% let tags=["web-dev","ML","language","android","react","data-structures"] %>
+                        <% tags.forEach(tag=>{ %>
+                            <div class="course-tags">
+                                <a href="/courses/tag/<%=tag%>#tagCourses ">
+                                    <%= tag %>
+                                </a>
+                            </div>
+                            <% }) %>
+                </div>
+                <div class="col-md-12">
                     <% if(noMatch.length>= 1 && noMatch!=="noSearch") { %>
-                        <h3>
+                        <h3 id="tagCourses">
                             <%= noMatch %>
-                                <a href="/courses"><button class="btn btn-primary">Go back</button></a>
+                                <a href="/courses"><button class="btn red-btn">Go back</button></a>
                         </h3>
                         <% } else if(noMatch!=="noSearch" ) { %>
-                            <h3>Search results for <%= search %>
+                            <h3 class="mt-5" id="tagCourses">Courses related to <%= search %>
                             </h3>
-                            <a href="/courses"><button class="btn btn-primary">Go back to all courses</button></a>
+                            <!-- <a href="/courses"><button class="btn red-btn">Go back to all courses</button></a> -->
                             <% } else { %>
 
-                                <h1>All courses</h1>
+                                <h1 id="allCourses" class="mt-5">All courses</h1>
                                 <% } %>
                 </div>
 
                 <div class="row row-cols-1 row-cols-lg-3 g-4">
                     <% for (let course of courses){%>
                         <div class="col">
-                            <div class="card">
-                                <img class="img-fluid" src="<%= course.image%>" alt="">
+                            <div class="card mb-3">
+                                <img class="img-fluid card-img-top" src="<%= course.image%>" alt="">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h5 class="card-title">
-                                                <%= course.title %>
-                                            </h5>
-                                            <p class="text-muted">
-                                                <%= course.author.name %>
-                                            </p>
+                                            <div class="card-course-main">
+                                                <h5 class="card-title">
+                                                    <%= course.title %>
+                                                </h5>
+                                                <p class="text-muted">
+                                                    <%= course.author.name %>
+                                                </p>
+                                            </div>
                                             <p>
                                                 <%= course.enrollers.length %> enrolled
                                             </p>
                                         </div>
-                                        <div class="col-5">
+                                        <div class="col-5 tags-col">
                                             <!-- <div class="row"> -->
-                                            <span>Tags: </span>
+
                                             <% course.tags.forEach(tag=>{ %>
-                                                <div class="tags">
-                                                    <%= tag %>
-                                                </div>
+                                                <a href="/courses/tag/<%=tag%>#tagCourses">
+                                                    <div class="tags">
+                                                        <%= tag %>
+                                                    </div>
+                                                </a>
                                                 <% }) %>
                                                     <!-- </div> -->
                                         </div>
                                     </div>
 
-                                    <a class="btn btn-primary" href="/courses/<%=course.id %>">View
+                                    <a class="btn red-btn" href="/courses/<%=course.id %>">View
                                         Course</a>
                                 </div>
                             </div>

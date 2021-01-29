@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="/css/stars.css">
 </head>
 
-<body class="d-flex flex-column vh-100">
+<body class="d-flex flex-column vh-120">
     <%- include('../partials/navbar') %>
         <%- include('../partials/flash') %>
-            <div class="container-fluid row heading">
+            <div class=" row heading">
                 <div class="col-md-5 col-8">
                     <div>
                         <h1>
@@ -49,27 +49,18 @@
 
                     </div>
                     <% if(currentUser &&course.author.equals(currentUser._id)) { %>
-                        <div>
-                            <!-- <a href="/courses/<%=course._id%>/edit" class="btn btn-warning">Edit</a>
-                    <form class="d-inline" action="/courses/<%=course._id%>?_method=DELETE" method="POST"><button
-                            class="btn btn-danger">Delete</button>
-                    </form> -->
-                        </div>
                         <% } %>
                             <% if(currentUser && course.enrollers.includes(currentUser._id)) { %>
                                 <button class="btn btn-secondary btn-already" disabled>Already enrolled</button>
                                 <% } else { %>
                                     <div>
                                         <form action="/courses/<%=course._id%>/enroll" method="POST">
-                                            <button type="submit" class="enroll-btn btn btn-success">Enroll for
+                                            <button type="submit" class="enroll-btn red-btn btn btn-success">Enroll for
                                                 free</button>
                                         </form>
                                     </div>
                                     <% } %>
                                         <p>Number of users enrolled: <%= course.enrollers.length%>
-
-
-
 
                 </div>
                 <div class="col-md-2 col-4 ">
@@ -125,7 +116,7 @@
                             </form>
                             <h3>Reviews</h3>
                             <% } else { %>
-
+                                <h3>Reviews</h3>
 
                                 <p class="text-muted">You must be logged in to add a review</p>
                                 <% } %>
