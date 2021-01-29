@@ -11,9 +11,18 @@
                     <p class="card-text">
                         <%=course.description%>
                     </p>
-                    <i>Submitted by <a href="/users/<%= course.author._id %>">
+                    <i>Taught by <a href="/users/<%= course.author._id %>">
                             <%=course.author.username %>
                         </a></i>
+                    <p>Number of students enrolled <%= course.enrollers.length%>
+                    </p>
+                    <p>
+                        <% course.tags.forEach(tag=>{ %>
+                            <span>
+                                <%= tag %>
+                            </span>
+                            <% }) %>
+                    </p>
                 </div>
                 <% if(currentUser &&course.author.equals(currentUser._id)) { %>
                     <div class="card-body">
@@ -23,11 +32,18 @@
                         </form>
                     </div>
                     <% } %>
-                        <div class="card-footer text-muted">
-                            <form action="/courses/<%=course._id%>/enroll" method="POST">
-                                <button type="submit" class="btn btn-success">Enroll</button>
-                            </form>
-                        </div>
+                        <% if(currentUser && course.enrollers.includes(currentUser._id)) { %>
+                            <div> Already enrolled</div>
+                            <% } else { %>
+                                <div class="card-footer text-muted">
+                                    <form action="/courses/<%=course._id%>/enroll" method="POST">
+                                        <button type="submit" class="btn btn-success">Enroll</button>
+                                    </form>
+                                </div>
+                                <% } %>
+
+
+
             </div>
         </div>
         <div class="col-6">
