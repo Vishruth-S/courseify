@@ -39,3 +39,99 @@ a {
     background:#e4e4e4;
     padding: 50px;
 }
+
+.main-app-container{
+    height: 400px;
+    padding: 50px;
+}
+
+.jumbo{
+    font-weight: 200;
+}
+
+/* -----search-box----------- */
+.search-box{
+	width: 900px;
+	/* margin-left: 135px; */
+    /* margin-top: 50px; */
+}
+
+#search-txt{
+	background: #fff;
+    width: 440px;
+    height: 54px;
+    padding: 0 25px;
+    border: 1px solid #420050; 
+
+}
+.purple-btn {
+    background-color: #420050;
+    color: white;
+    border: 0;
+}
+.purple-btn:hover {
+    background-color: #300638;
+    color: white;
+    border: 0;
+}
+.sell-btn {
+    height: 44px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+#search-btn{
+    /* padding-top: 2px ; */
+	position: relative;
+    left: -5px;
+    top: 2px;
+    height: 54px;
+    border: none;
+    width: 40px;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#browse-btn{
+    float: left;
+    height: 54px;
+    outline: none;
+    border: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    border-radius: 5px 0px 0px 5px;
+}
+.button-imp{
+    background: #ff0000;
+    color: #fff;
+    border: 2px solid #ff0000;
+    height: 50px;
+    width: 120px;
+}
+.button-nav{
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 20px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    color: #420050;
+}
+.jumbo{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+    color: white;
+}
+.jumbotron {
+    background-image: linear-gradient( #00bbce, #00d0ff);
+    margin-top: 0;
+    height: 450px;
+}
+#search-display-text {
+    margin-top: 60px;
+    margin-bottom: 10px;
+    color: white;
+}

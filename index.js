@@ -69,7 +69,7 @@ app.use('/courses/', postRoutes)
 app.use('/courses/:id/reviews/', reviewsRoutes)
 
 app.get('/', (req, res) => {
-    res.render('Home')
+    res.redirect('/courses')
 })
 
 

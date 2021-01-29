@@ -15,160 +15,162 @@
 
 <body class="d-flex flex-column vh-100">
     <%- include('../partials/navbar') %>
-
-        <div class=" row heading">
-            <div class="col-md-5 col-8">
-                <div>
-                    <h1>
-                        <%=course.title %>
-                    </h1>
+        <%- include('../partials/flash') %>
+            <div class="container-fluid row heading">
+                <div class="col-md-5 col-8">
                     <div>
+                        <h1>
+                            <%=course.title %>
+                        </h1>
+                        <div>
 
-                        <span class=" ">
-                            <i class="fas fa-star ratingAvg"></i>
-                            <%= avgRating %>
-                        </span>
-                        <span>
-                            <a href="#reviews">
-                                &bull; <%= course.reviews.length %> reviews
-                            </a>
-                        </span>
+                            <span class=" ">
+                                <i class="fas fa-star ratingAvg"></i>
+                                <%= avgRating %>
+                            </span>
+                            <span>
+                                <a href="#reviews">
+                                    &bull; <%= course.reviews.length %> reviews
+                                </a>
+                            </span>
+
+                        </div>
+                        <div><i>Taught by <a href="/users/<%= course.author._id %>">
+                                    <span>
+                                        <%=course.author.name %>
+                                    </span>
+                                </a></i>
+                        </div>
+
+                        <p>
+
+                        </p>
+                        </p>
 
                     </div>
-                    <div><i>Taught by <a href="/users/<%= course.author._id %>">
-                                <span>
-                                    <%=course.author.name %>
-                                </span>
-                            </a></i>
-                    </div>
-
-                    <p>
-
-                    </p>
-                    </p>
-
-                </div>
-                <% if(currentUser &&course.author.equals(currentUser._id)) { %>
-                    <div>
-                        <!-- <a href="/courses/<%=course._id%>/edit" class="btn btn-warning">Edit</a>
+                    <% if(currentUser &&course.author.equals(currentUser._id)) { %>
+                        <div>
+                            <!-- <a href="/courses/<%=course._id%>/edit" class="btn btn-warning">Edit</a>
                     <form class="d-inline" action="/courses/<%=course._id%>?_method=DELETE" method="POST"><button
                             class="btn btn-danger">Delete</button>
                     </form> -->
-                    </div>
-                    <% } %>
-                        <% if(currentUser && course.enrollers.includes(currentUser._id)) { %>
-                            <button class="btn btn-secondary btn-already" disabled>Already enrolled</button>
-                            <% } else { %>
-                                <div>
-                                    <form action="/courses/<%=course._id%>/enroll" method="POST">
-                                        <button type="submit" class="enroll-btn btn btn-success">Enroll for
-                                            free</button>
-                                    </form>
-                                </div>
-                                <% } %>
-                                    <p>Number of users enrolled: <%= course.enrollers.length%>
-
-
-
-
-            </div>
-            <div class="col-md-2 col-4 ">
-                <div class="course-skills">
-                    <h5>Skills you will learn</h5>
-                    <% course.tags.forEach(tag=>{ %>
-                        <div class="show-tags">
-                            <%= tag %>
                         </div>
-                        <% }) %>
-                </div>
-            </div>
-            <div class="col-md-5 col-12">
-                <img src="<%=course.image%>" class="course-show-img card-img-top" alt="">
-            </div>
-        </div>
-        <main class="container mt-5">
-            <div class="col-12">
-                <div>
-                    <h3>About this Course</h3>
-                    <p class="card-text">
-                        <%=course.description%>
-                    </p>
-                </div>
-                <div id="reviews" class="mt-5">
-                    <% if(currentUser) { %>
-                        <h4>Leave a review</h4>
-                        <form action="/courses/<%=course._id%>/reviews" class="mb-3 validated-form" method="POST"
-                            novalidate>
-                            <fieldset class="starability-basic">
-                                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1"
-                                    checked aria-label="No rating." />
-                                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                                <label for="first-rate1" title="Terrible">1 star</label>
-                                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                                <label for="first-rate2" title="Not good">2 stars</label>
-                                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                                <label for="first-rate3" title="Average">3 stars</label>
-                                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                                <label for="first-rate4" title="Very good">4 stars</label>
-                                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                                <label for="first-rate5" title="Amazing">5 stars</label>
-                            </fieldset>
+                        <% } %>
+                            <% if(currentUser && course.enrollers.includes(currentUser._id)) { %>
+                                <button class="btn btn-secondary btn-already" disabled>Already enrolled</button>
+                                <% } else { %>
+                                    <div>
+                                        <form action="/courses/<%=course._id%>/enroll" method="POST">
+                                            <button type="submit" class="enroll-btn btn btn-success">Enroll for
+                                                free</button>
+                                        </form>
+                                    </div>
+                                    <% } %>
+                                        <p>Number of users enrolled: <%= course.enrollers.length%>
 
 
-                            <div class="mb-3">
-                                <!-- <label class="form-label" for="body">Review</label> -->
-                                <textarea class="form-control" name="review[body]" id="body" rows="3" cols="30"
-                                    required></textarea>
-                                <div class="valid-feedback">Looks good</div>
+
+
+                </div>
+                <div class="col-md-2 col-4 ">
+                    <div class="course-skills">
+                        <h5>Skills you will learn</h5>
+                        <% course.tags.forEach(tag=>{ %>
+                            <div class="show-tags">
+                                <%= tag %>
                             </div>
-                            <button class="btn btn-success">Submit</button>
-                        </form>
-                        <% } else { %>
+                            <% }) %>
+                    </div>
+                </div>
+                <div class="col-md-5 col-12">
+                    <img src="<%=course.image%>" class="course-show-img card-img-top" alt="">
+                </div>
+            </div>
+            <main class="container mt-5">
+                <div class="col-12">
+                    <div>
+                        <h3>About this Course</h3>
+                        <p class="card-text">
+                            <%=course.description%>
+                        </p>
+                    </div>
+                    <div id="reviews" class="mt-5">
+                        <% if(currentUser) { %>
+                            <h4>Leave a review</h4>
+                            <form action="/courses/<%=course._id%>/reviews" class="mb-3 validated-form" method="POST"
+                                novalidate>
+                                <fieldset class="starability-basic">
+                                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]"
+                                        value="1" checked aria-label="No rating." />
+                                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                                    <label for="first-rate1" title="Terrible">1 star</label>
+                                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                                    <label for="first-rate2" title="Not good">2 stars</label>
+                                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                                    <label for="first-rate3" title="Average">3 stars</label>
+                                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                                    <label for="first-rate4" title="Very good">4 stars</label>
+                                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                                    <label for="first-rate5" title="Amazing">5 stars</label>
+                                </fieldset>
 
+
+                                <div class="mb-3">
+                                    <!-- <label class="form-label" for="body">Review</label> -->
+                                    <textarea class="form-control" name="review[body]" id="body" rows="3" cols="30"
+                                        required></textarea>
+                                    <div class="valid-feedback">Looks good</div>
+                                </div>
+                                <button class="btn btn-success">Submit</button>
+                            </form>
                             <h3>Reviews</h3>
-                            <p class="text-muted">You must be logged in to add a review</p>
-                            <% } %>
-                                <% if(course.reviews.length===0) { %>
-                                    <h6>There are no reviews for this course</h6>
-                                    <% } else { %>
+                            <% } else { %>
 
-                                        <% for(let review of course.reviews) { %>
-                                            <div class="card mb-3">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <%= review.author.username %>
-                                                    </h5>
-                                                    <p class="starability-result" data-rating="<%= review.rating %>">
-                                                        Rated: <%= review.rating %> stars
-                                                    </p>
-                                                    <p class="Card-text">
-                                                        <%= review.body %>
-                                                    </p>
-                                                    <% if(currentUser && review.author.equals(currentUser._id)) { %>
-                                                        <form
-                                                            action="/courses/<%=course._id%>/reviews/<%=review._id%>?_method=DELETE"
-                                                            method="POST">
-                                                            <button class="btn btn-sm btn-danger">Delete</button>
-                                                        </form>
+
+                                <p class="text-muted">You must be logged in to add a review</p>
+                                <% } %>
+                                    <% if(course.reviews.length===0) { %>
+                                        <h6>There are no reviews for this course</h6>
+                                        <% } else { %>
+
+                                            <% for(let review of course.reviews) { %>
+                                                <div class="card mb-3">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <%= review.author.username %>
+                                                        </h5>
+                                                        <p class="starability-result"
+                                                            data-rating="<%= review.rating %>">
+                                                            Rated: <%= review.rating %> stars
+                                                        </p>
+                                                        <p class="Card-text">
+                                                            <%= review.body %>
+                                                        </p>
+                                                        <% if(currentUser && review.author.equals(currentUser._id)) { %>
+                                                            <form
+                                                                action="/courses/<%=course._id%>/reviews/<%=review._id%>?_method=DELETE"
+                                                                method="POST">
+                                                                <button class="btn btn-sm btn-danger">Delete</button>
+                                                            </form>
+                                                            <% } %>
+                                                    </div>
+                                                    <% } %>
                                                         <% } %>
                                                 </div>
-                                                <% } %>
-                                                    <% } %>
-                                            </div>
 
 
+                    </div>
                 </div>
-            </div>
-        </main>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-            integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-            integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
-            crossorigin="anonymous"></script>
-        <script src='/scripts/validateForms.js'>
-        </script>
-        <%- include('../partials/footer')%>
+            </main>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+                integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+                integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+                crossorigin="anonymous"></script>
+            <script src='/scripts/validateForms.js'>
+            </script>
+            <%- include('../partials/footer')%>
 </body>
 
 </html>

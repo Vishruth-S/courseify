@@ -1,9 +1,15 @@
 <% layout('layouts/boilerplate') %>
     <div class="row">
-        <div class="col-md-4">
-            <h1>
-                <%= user.name %>
+        <div class="col-md-4 profile-card">
+            <div> <img class="profile-image-show mt-3" src="https://au.edu.pk/Pages/Faculties/Faculty_Images/0.jpg"
+                    alt=""> </div>
+            <h1 class="mt-3">
+                <%= user. name %>
             </h1>
+            <% if(currentUser && currentUser._id.equals(user._id)) { %>
+                <h4>Your username: <%= user.username %>
+                </h4>
+                <% } %>
         </div>
         <div class="col-md-8">
             <% if(courses.length> 1) { %>
@@ -13,13 +19,34 @@
                         <h2>Courses by <%=user.name%>
                         </h2>
                         <% } %>
-                            <ul>
+                            <div class="row row-cols-1 row-cols-lg-3 g-4">
                                 <% courses.forEach(course=>{ %>
-                                    <li>
-                                        <%= course.title %>
-                                    </li>
+                                    <div class="col">
+                                        <div class="card">
+                                            <img class="img-fluid" src="<%= course.image%>" alt="">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h5 class="card-title">
+                                                            <%= course.title %>
+                                                        </h5>
+                                                        <p class="text-muted">
+                                                            <%= course.author.name %>
+                                                        </p>
+                                                        <p>
+                                                            <%= course.enrollers.length %> enrolled
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+
+                                                <a class="btn btn-primary" href="/courses/<%=course.id %>">View
+                                                    Course</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <% }) %>
-                            </ul>
+                            </div>
                             <% } %>
                                 <% if(currentUser && currentUser._id.equals(user._id)) { %>
                                     <h2>My courses</h2>
@@ -30,13 +57,32 @@
                                                 Courses</button></a>
                                         </h2>
                                         <% } else { %>
-                                            <ul>
+                                            <div class="row row-cols-1 row-cols-lg-3 g-4">
                                                 <% user.myCourses.forEach(course=>{ %>
-                                                    <li>
-                                                        <%= course.title %>
-                                                    </li>
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <img class="img-fluid" src="<%= course.image%>" alt="">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-7">
+                                                                        <h5 class="card-title">
+                                                                            <%= course.title %>
+                                                                        </h5>
+                                                                        <p class="text-muted">
+                                                                            <%= course.author.name %>
+                                                                        </p>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <a class="btn btn-primary"
+                                                                    href="/courses/<%=course.id %>">Go to
+                                                                    Course</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <% }) %>
-                                            </ul>
+                                            </div>
                                             <% }} %>
 
         </div>
