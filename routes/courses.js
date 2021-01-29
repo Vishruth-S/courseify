@@ -3,6 +3,7 @@ const router = express.Router()
 const { isLoggedIn, isAuthor } = require('../middleware')
 
 const Course = require('../models/Course')
+const User = require('../models/User')
 
 
 router.get('/', async (req, res) => {
@@ -61,7 +62,10 @@ router.delete('/:id', isLoggedIn, isAuthor, async (req, res) => {
 
 router.post('/:id/enroll/', isLoggedIn, async (req, res) => {
     const course = await Course.findById(req.params.id)
+    const user = await User.findById(req.user._id)
     course.enrollers.push(req.user._id)
+    user.myCourses.push(course)
+    await user.save()
     await course.save()
     req.flash('success', 'Enrolled successfully')
     res.redirect(`/courses/${course._id}`)

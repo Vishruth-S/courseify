@@ -11,7 +11,9 @@
                     <p class="card-text">
                         <%=course.description%>
                     </p>
-                    <i>Submitted by <%=course.author.username %></i>
+                    <i>Submitted by <a href="/users/<%= course.author._id %>">
+                            <%=course.author.username %>
+                        </a></i>
                 </div>
                 <% if(currentUser &&course.author.equals(currentUser._id)) { %>
                     <div class="card-body">

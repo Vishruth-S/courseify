@@ -2,6 +2,7 @@ const express = require('express')
 const passport = require('passport')
 const router = express.Router()
 const User = require('../models/User')
+const Course = require('../models/Course')
 
 router.get('/register', (req, res) => {
     res.render('users/register')
@@ -42,5 +43,28 @@ router.get('/logout', (req, res) => {
     res.redirect('/courses')
 })
 
+router.get('/users/:id', async (req, res) => {
+    const foundUser = await User.findById(req.params.id).populate({
+        path: 'myCourses'
+    })
+    await Course.find().where('author').equals(foundUser._id).exec((err, courses) => {
+        if (err) {
+            req.flash('error', 'Something went wrong')
+            return res.redirect('/courses')
+        }
+        res.render('users/show', { user: foundUser, courses: courses })
+    })
+    // let userCourses = [{}]
+    // await foundUser.myCourses.forEach(async (courseId) => {
+    //     let currentCourse = await Course.findById(courseId)
+    //     console.log(currentCourse)
+    //     await userCourses.push(currentCourse)
+    // })
+    // console.log(userCourses)
+
+
+
+    // })
+})
 
 module.exports = router

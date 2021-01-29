@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <div class="col-md-4">
+            <h1>
+                <%= user.username %>
+            </h1>
+        </div>
+        <div class="col-md-8">
+            <h2>Courses by <%= user.username %>
+            </h2>
+            <ul>
+                <% courses.forEach(course=>{ %>
+                    <li>
+                        <%= course.title %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <h2>Courses enrolled by <%= user.username %>
+            </h2>
+            <ul>
+                <% user.myCourses.forEach(course=>{ %>
+                    <li>
+                        <%= course.title %>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
+    </div>
