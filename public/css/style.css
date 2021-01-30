@@ -1,0 +1,268 @@
+body {
+    overflow-x: hidden;
+}
+
+main {
+    min-height: 200px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    text-decoration: none;
+    color: initial;
+}
+
+.show-prfile {
+    min-height: 100vh;
+}
+
+.navbar {
+    box-shadow: -1px -3px 20px 2px #000;
+}
+
+.card-img-top {
+    height: 200px;
+}
+
+.card-body{
+    height: 220px;
+}
+
+.card-course-main {
+    min-height: 100px;
+}
+
+.user-page-img {
+    height: 160px;
+}
+
+.tags-col {
+    text-align: right;
+}
+
+.tags {
+    display: inline-block;
+    background: #ffcb0052;
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin: 3px;
+}
+
+.show-tags {
+    display: inline-block;
+    background: #636363;
+    color: white;
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin: 3px;
+}
+
+.course-tags {
+    display: inline-block;
+    border: 2px dashed;
+    padding: 10px;
+    height:  40px;
+    margin: 10px 2px;
+    border-radius: 10px;
+}
+
+.col-5 {
+    padding-right: 0px;
+}
+
+.course-show-img {
+    max-width: 500px;
+}
+
+.enroll-btn, .btn-already {
+    margin-top: 30px;
+}
+
+/* .ratingAvg {
+    color: #F5BD23;
+} */
+
+.heading {
+   background-image: linear-gradient( #ffd400, #ff9900);
+    padding: 50px;
+}
+
+.main-app-container{
+    height: 400px;
+    padding: 50px;
+}
+
+.jumbo{
+    font-weight: 200;
+}
+
+/* -----search-box----------- */
+.search-box{
+	width: 900px;
+	/* margin-left: 135px; */
+    /* margin-top: 50px; */
+}
+
+#search-txt{
+	background: #fff;
+    width: 440px;
+    height: 54px;
+    padding: 0 25px;
+    border: 1px solid #420050; 
+
+}
+.red-btn {
+    background-color: #c10000;
+    color: white;
+    border: 0;
+}
+.red-btn:hover {
+    background-color: #740000;
+    color: white;
+    border: 0;
+}
+.sell-btn {
+    height: 44px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+#search-btn{
+    /* padding-top: 2px ; */
+	position: relative;
+    left: -5px;
+    top: 2px;
+    height: 54px;
+    border: none;
+    width: 40px;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#browse-btn{
+    float: left;
+    height: 54px;
+    outline: none;
+    border: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    border-radius: 5px 0px 0px 5px;
+}
+.button-imp{
+    background: #ff0000;
+    color: #fff;
+    border: 2px solid #ff0000;
+    height: 50px;
+    width: 120px;
+}
+.button-nav{
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 20px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    color: #420050;
+}
+.jumbo{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+}
+.jumbotron {
+    background-image:linear-gradient( #ffd400, #ff9900);
+    margin-top: 0;
+    height: 450px;
+}
+#search-display-text {
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.profile-card {
+    text-align: center;
+}
+
+.card-usershow {
+    height: 160px;
+}
+@media (max-width: 760px) {
+    .jumbotron-fluid{
+        overflow: hidden;
+    }
+    .jumbo{
+        font-size: 50px;
+        margin-bottom: 20px;
+        margin-top: 30px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+    .search-box{
+        width: 500px;
+        /* margin-left: 135px; */
+        /* margin-top: 50px; */
+    }
+    .search-body{
+        overflow: hidden;
+    }
+    
+    #search-txt{
+        background: #fff;
+        width: 200px;
+        height: 50px;
+        padding: 0 10px;
+    
+    }
+    
+    #search-btn{
+        position: relative;
+        left: -5px;
+        height: 50px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        top: 2px;
+        width: 40px;
+        border-radius: 0 5px 5px 0;
+        font-size: 20px;
+    }
+    
+    #browse-btn{
+        float: left;
+        height: 50px;
+        outline: none;
+        cursor: pointer;
+        font-size: 12px;
+    }
+    .button-nav{
+        background: transparent;
+        border: 0;
+        outline: 0;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-right: 5px;
+    }
+    
+    .jumbotron {
+        background-image: l linear-gradient( #00bbce, #00d0ff);
+        margin-top: 0;
+        height: 550px;
+    }
+    
+    #search-display-text {
+        margin-top: 60px;
+        margin-bottom: 10px;
+        color: white;
+    }
+    .main-app-container {
+        height: 400px;
+        padding: 30px;
+    }
+    .heading {
+        padding: 30px;
+    }
+}

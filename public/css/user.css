@@ -1,0 +1,13 @@
+
+.profile-image {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	float: left;
+}
+
+.profile-image-show{
+	width: 150px;
+	height: 150px;
+    border-radius: 50%;
+}
