@@ -249,4 +249,8 @@ button.ghost {
 	h1 {
 		font-size: 2rem;
 	}
+	.main-form {
+		margin: auto;
+		padding: 20px;
+	}
 }
