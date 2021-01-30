@@ -31,7 +31,6 @@ db.once("open", () => {
     console.log("Database connected")
 })
 
-const PORT = process.env.PORT || 5000
 const app = express()
 
 app.engine('ejs', ejsMate)
@@ -102,6 +101,8 @@ app.all('*', (req, res, next) => {
 //     await newPost.save()
 //     res.send(newPost)
 // })
+
+const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => {
     console.log(`Sever running on http://localhost:${PORT}`)
