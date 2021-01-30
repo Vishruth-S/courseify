@@ -23,6 +23,11 @@ a:hover {
     box-shadow: -1px -3px 20px 2px #000;
 }
 
+.nav-link {
+    color: black !important;
+    margin: 0px 8px;
+}
+
 .card-img-top {
     height: 200px;
 }
