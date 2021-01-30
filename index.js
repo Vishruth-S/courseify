@@ -73,7 +73,10 @@ app.get('/', (req, res) => {
 })
 
 
-
+app.all('*', (req, res, next) => {
+    req.flash('error', 'something went wrong')
+    res.redirect('/courses/')
+})
 
 // app.get('/makepost', async (req, res) => {
 //     const newPost = new Course({ title: "Test Course", description: "Test content ok" })

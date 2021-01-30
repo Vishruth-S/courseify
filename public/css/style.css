@@ -15,6 +15,10 @@ a:hover {
     color: initial;
 }
 
+.show-prfile {
+    min-height: 100vh;
+}
+
 .navbar {
     box-shadow: -1px -3px 20px 2px #000;
 }
@@ -29,6 +33,10 @@ a:hover {
 
 .card-course-main {
     min-height: 100px;
+}
+
+.user-page-img {
+    height: 160px;
 }
 
 .tags-col {

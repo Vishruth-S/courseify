@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/f9cc6eebb4.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="d-flex flex-column">
+<body class="d-flex flex-column show-prfile">
     <%- include('../partials/navbar') %>
 
         <main class="container mt-5">
@@ -42,7 +42,7 @@
                                             <% courses.forEach(course=>{ %>
                                                 <div class="col">
                                                     <div class="card">
-                                                        <img class="img-fluid card-img-top" src="<%= course.image%>"
+                                                        <img class="img-fluid card-img-top " src="<%= course.image%>"
                                                             alt="">
                                                         <div class="card-body ">
                                                             <div class="row">
@@ -82,9 +82,11 @@
                                                         <div class="row row-cols-1 row-cols-lg-3 g-4">
                                                             <% user.myCourses.forEach(course=>{ %>
                                                                 <div class="col">
-                                                                    <div class="card">
-                                                                        <img class="img-fluid" src="<%= course.image%>"
-                                                                            alt="">
+                                                                    <div class="card ">
+                                                                        <div class="">
+                                                                            <img class="img-fluid user-page-img"
+                                                                                src="<%= course.image%>" alt="">
+                                                                        </div>
                                                                         <div class="card-body card-usershow">
                                                                             <div class="row">
                                                                                 <div class="col-7">

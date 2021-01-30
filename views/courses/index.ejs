@@ -35,11 +35,11 @@
                     <h3>Popular categories</h3>
                     <% let tags=["web-dev","ML","language","android","react","data-structures"] %>
                         <% tags.forEach(tag=>{ %>
-                            <div class="course-tags">
-                                <a href="/courses/tag/<%=tag%>#tagCourses ">
+                            <a href="/courses/tag/<%=tag%>#tagCourses ">
+                                <div class="course-tags">
                                     <%= tag %>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                             <% }) %>
                 </div>
                 <div class="col-md-12">

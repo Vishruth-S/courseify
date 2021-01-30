@@ -123,33 +123,34 @@
                                     <% if(course.reviews.length===0) { %>
                                         <h6>There are no reviews for this course</h6>
                                         <% } else { %>
-
-                                            <% for(let review of course.reviews) { %>
-                                                <div class="card mb-3">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">
-                                                            <%= review.author.username %>
-                                                        </h5>
-                                                        <p class="starability-result"
-                                                            data-rating="<%= review.rating %>">
-                                                            Rated: <%= review.rating %> stars
-                                                        </p>
-                                                        <p class="Card-text">
-                                                            <%= review.body %>
-                                                        </p>
-                                                        <% if(currentUser && review.author.equals(currentUser._id)) { %>
-                                                            <form
-                                                                action="/courses/<%=course._id%>/reviews/<%=review._id%>?_method=DELETE"
-                                                                method="POST">
-                                                                <button class="btn btn-sm btn-danger">Delete</button>
-                                                            </form>
+                                            <div class="mb-3">
+                                                <% for(let review of course.reviews) { %>
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">
+                                                                <%= review.author.username %>
+                                                            </h5>
+                                                            <p class="starability-result"
+                                                                data-rating="<%= review.rating %>">
+                                                                Rated: <%= review.rating %> stars
+                                                            </p>
+                                                            <p class="Card-text">
+                                                                <%= review.body %>
+                                                            </p>
+                                                            <% if(currentUser && review.author.equals(currentUser._id))
+                                                                { %>
+                                                                <form
+                                                                    action="/courses/<%=course._id%>/reviews/<%=review._id%>?_method=DELETE"
+                                                                    method="POST">
+                                                                    <button
+                                                                        class="btn btn-sm btn-danger">Delete</button>
+                                                                </form>
+                                                                <% } %>
+                                                        </div>
+                                                        <% } %>
                                                             <% } %>
                                                     </div>
-                                                    <% } %>
-                                                        <% } %>
-                                                </div>
-
-
+                                            </div>
                     </div>
                 </div>
             </main>
