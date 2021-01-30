@@ -3,7 +3,7 @@
 
 Courseify is an online education courses website.   
 Check out the live deployment here: https://courseify5.herokuapp.com/courses    
-Demo video: https://drive.google.com/drive/u/0/folders/1nAHB_kihRvivTp8ZbKvj7BMlB_nHjiRI 
+Demo video: https://drive.google.com/file/d/1G8ZDOM_u4RJEdmpwKnpb_1pWK8EG5ejp/view
 
 ## Features
 - Create your own account and login, fully secure.
