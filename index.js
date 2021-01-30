@@ -13,8 +13,12 @@ const userRoutes = require('./routes/users')
 const postRoutes = require('./routes/courses')
 const reviewsRoutes = require('./routes/reviews')
 
+const MongoDBStore = require('connect-mongo')(session)
 
-mongoose.connect("mongodb://localhost:27017/devcraft", {
+require('dotenv').config()
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/devcraft"
+// const dbUrl = "mongodb://localhost:27017/devcraft"
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -34,8 +38,23 @@ app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
+
+const secret = process.env.SECRET || 'thisisasecret'
+
+const store = new MongoDBStore({
+    url: dbUrl,
+    secret: secret,
+    touchAfter: 24 * 3600
+})
+
+store.on('error', function (e) {
+    console.log("Session store error", e)
+})
+
+
 const sessionConfig = {
-    secret: 'thisisasecret',
+    store,
+    secret: secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
