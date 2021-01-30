@@ -45,11 +45,11 @@ npm install
 ```
 npm start
 ```
-(On starting, there will be no courses as a new local database will be created. You may create accounts and add courses to check out the full functionality of the application. Alternatively, you can also checkout the fully deployed app [here](https://courseify5.herokuapp.com/courses)
+(On starting, there will be no courses ,a new local database will be created. You may create accounts and add courses to check out the full functionality of the application. Alternatively, you can also checkout the fully deployed app [here](https://courseify5.herokuapp.com/courses)
 
 
 ### Team 
 - Vishruth S, *Team Lead*
-- Bharath Raj R
+- Bharath Raj R.
 - Ebin  Bigi
 - Thomas S J
