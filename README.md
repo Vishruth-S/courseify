@@ -51,5 +51,5 @@ npm start
 ### Team 
 - Vishruth S, *Team Lead*
 - Bharath Raj R
-- Ebin Bigi
+- Ebin  Bigi
 - Thomas S J
