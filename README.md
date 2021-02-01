@@ -3,7 +3,6 @@
 
 Courseify is an online education courses website.   
 Check out the live deployment here: https://courseify5.herokuapp.com/courses    
-Demo video: https://drive.google.com/file/d/1G8ZDOM_u4RJEdmpwKnpb_1pWK8EG5ejp/view
 
 ## Features
 - Create your own account and login, fully secure.
@@ -47,10 +46,3 @@ npm install
 npm start
 ```
 (On starting, there will be no courses since a new local database will be created. You may create accounts and add courses to check out the full functionality of the application. Alternatively, you can also checkout the fully deployed app [here](https://courseify5.herokuapp.com/courses)
-
-
-### Team Cypher
-- Vishruth S, *Team Lead*
-- Bharath Raj R.
-- Ebin  Bigi
-- Thomas S J
